@@ -1,0 +1,60 @@
+﻿.restSlika{
+    width: 85%;
+    padding: 0;
+}
+.tabela{
+    width: 85%;
+}
+.resenja {
+    text-align: right;
+}
+
+.nazivRest{
+    font-weight: 700;
+    font-size: 2.6em;
+}
+.levi{
+    padding: 0;
+}
+
+.mapa {
+    width: 100%;
+    height: 70%;
+    border: none;
+}
+.divKomentara {
+    border:0.5px solid black;
+    border-radius:4px;
+}
+.ceoKomentar{
+    border-bottom: 0.5px solid rgba(0,0,0,0.3);
+    padding:4px;
+}
+.idKorisnika {
+    font-size: 1.2em;
+}
+
+.btnKomentarisi {
+    float: right !important; 
+    border-radius: 5px;
+    font-weight: 700;
+    width: 20%;
+    background-color: #c2c2c2;
+    color: black;
+}
+
+.komentatOpis {
+    text-align: left;
+    font-size:1.2em;
+}
+
+.ocena {
+    text-align: right;
+    color: chocolate;
+    font-size: 1.2em;
+}
+.naslovKom{
+    color:red;
+}
+
+ 

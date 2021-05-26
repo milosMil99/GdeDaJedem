@@ -1,0 +1,11 @@
+﻿body {
+    margin: 0 10%;
+}
+
+.tabela{
+    font-size: 1.2em;
+}
+
+.dt{
+   text-align: left !important;
+}

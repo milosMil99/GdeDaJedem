@@ -1,0 +1,61 @@
+﻿@model IEnumerable<GdeDaJedem.Domain.KomentarBO>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KomentarID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ocena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestoranID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KorisnikID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KomentarID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ocena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestoranID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KorisnikID)
+        </td>
+        <td>
+
+            @using (Html.BeginForm("UpdateKomentar", "Korisnik", FormMethod.Get))
+            {
+               // @Html.Hidden("korisnikID", item.KorisnikID);
+                @Html.Hidden("KomentarID", item.KomentarID);
+                <input type="submit" value="Edit" />
+            }
+            |
+            @using (Html.BeginForm("DeleteKomentar", "Korisnik", FormMethod.Post))
+            {
+                @Html.Hidden("korisnikID", item.KorisnikID);
+                @Html.Hidden("KomentarID", item.KomentarID);
+                <input type="submit" value="Delete" />
+            }
+
+        </td>
+    </tr>
+}
+
+</table>

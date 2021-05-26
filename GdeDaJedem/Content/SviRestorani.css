@@ -1,0 +1,51 @@
+﻿.divFilteri {
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 13%);
+    border-radius: 5px;
+    margin-bottom: 10%;
+}
+
+.prikazRestorana {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 3%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: transform.2s;
+    color: black;
+    text-decoration: none;
+}
+
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}
+
+.restoranSlika {
+    width: 100%;
+}
+
+.prikazRestorana:hover {
+    transform: scale(1.02);
+    text-decoration: none;
+    color: black;
+}
+
+.divSlikaRest {
+    padding: 0;
+}
+
+.ocena {
+    padding-top: 5%;
+    padding-left: 15%;
+    padding-bottom: 5%;
+}
+
+.zvezda {
+    color: goldenrod;
+}
+
+.tekst {
+    margin-top: 3%;
+}
+
+.listaRestorana {
+    padding: 0;
+}

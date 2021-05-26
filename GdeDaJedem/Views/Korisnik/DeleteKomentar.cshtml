@@ -1,0 +1,58 @@
+﻿@model GdeDaJedem.Domain.KomentarBO
+
+<h3>Brisanje komentara</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KomentarID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KomentarID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ocena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ocena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RestoranID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RestoranID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KorisnikID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KorisnikID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obrisi" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

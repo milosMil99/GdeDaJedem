@@ -1,0 +1,58 @@
+﻿@model GdeDaJedem.Domain.KorisnikBO
+
+@using (Html.BeginForm("Login", "Korisnik", FormMethod.Post))
+{
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<label for="user">Username</label>
+<input type="text" id="user" name="user" class="form-control" placeholder="Username">
+<br />
+<label for="pass">Password</label>
+<input type="password" id="pass" class="form-control" name="pass" placeholder="Password">
+<br />
+@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+<input type="submit" name="login" id="lgoin" class="form-control" value="Uloguj se" />
+<br />
+}
+
+@Html.ActionLink("Registruj se", "CreateKorisnik","Korisnik")
+
+
+@*@using (Html.BeginForm("Login", "Korisnik", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Unesi" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+        }*@
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}

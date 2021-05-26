@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GdeDaJedemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="KorisnikID" />
+          </Key>
+          <Property Name="KorisnikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DatumUclanjenja" Type="date" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DatumRodj" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KorisnikRola">
+          <Key>
+            <PropertyRef Name="KorisnikRolaID" />
+          </Key>
+          <Property Name="KorisnikRolaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KorisnikID" Type="int" Nullable="false" />
+          <Property Name="RolaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OceneKomentari">
+          <Key>
+            <PropertyRef Name="KomentarID" />
+          </Key>
+          <Property Name="KomentarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ocena" Type="float" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RestoranID" Type="int" Nullable="false" />
+          <Property Name="KorisnikID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Opstine">
+          <Key>
+            <PropertyRef Name="opstinaID" />
+          </Key>
+          <Property Name="opstinaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Restoran">
+          <Key>
+            <PropertyRef Name="RestoranID" />
+          </Key>
+          <Property Name="RestoranID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PIB" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="200" />
+          <Property Name="Slika" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mapa" Type="nvarchar(max)" />
+          <Property Name="Opstina" Type="int" />
+        </EntityType>
+        <EntityType Name="Rola">
+          <Key>
+            <PropertyRef Name="RolaID" />
+          </Key>
+          <Property Name="RolaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoviRestorana">
+          <Key>
+            <PropertyRef Name="TipId" />
+          </Key>
+          <Property Name="TipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RestoranID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_KorisnikRola_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="KorisnikRola" Type="Self.KorisnikRola" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="KorisnikRola">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikRola_Rola">
+          <End Role="Rola" Type="Self.Rola" Multiplicity="1" />
+          <End Role="KorisnikRola" Type="Self.KorisnikRola" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rola">
+              <PropertyRef Name="RolaID" />
+            </Principal>
+            <Dependent Role="KorisnikRola">
+              <PropertyRef Name="RolaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OceneKomentari_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="OceneKomentari" Type="Self.OceneKomentari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="OceneKomentari">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OceneKomentari_Restoran">
+          <End Role="Restoran" Type="Self.Restoran" Multiplicity="1" />
+          <End Role="OceneKomentari" Type="Self.OceneKomentari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restoran">
+              <PropertyRef Name="RestoranID" />
+            </Principal>
+            <Dependent Role="OceneKomentari">
+              <PropertyRef Name="RestoranID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restoran_Opstine">
+          <End Role="Opstine" Type="Self.Opstine" Multiplicity="0..1" />
+          <End Role="Restoran" Type="Self.Restoran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opstine">
+              <PropertyRef Name="opstinaID" />
+            </Principal>
+            <Dependent Role="Restoran">
+              <PropertyRef Name="Opstina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoviRestorana_Restoran">
+          <End Role="Restoran" Type="Self.Restoran" Multiplicity="1" />
+          <End Role="TipoviRestorana" Type="Self.TipoviRestorana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restoran">
+              <PropertyRef Name="RestoranID" />
+            </Principal>
+            <Dependent Role="TipoviRestorana">
+              <PropertyRef Name="RestoranID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GdeDaJedemModelStoreContainer">
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KorisnikRola" EntityType="Self.KorisnikRola" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OceneKomentari" EntityType="Self.OceneKomentari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Opstine" EntityType="Self.Opstine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restoran" EntityType="Self.Restoran" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rola" EntityType="Self.Rola" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoviRestorana" EntityType="Self.TipoviRestorana" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_KorisnikRola_Korisnik" Association="Self.FK_KorisnikRola_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="KorisnikRola" EntitySet="KorisnikRola" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikRola_Rola" Association="Self.FK_KorisnikRola_Rola">
+            <End Role="Rola" EntitySet="Rola" />
+            <End Role="KorisnikRola" EntitySet="KorisnikRola" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OceneKomentari_Korisnik" Association="Self.FK_OceneKomentari_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="OceneKomentari" EntitySet="OceneKomentari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OceneKomentari_Restoran" Association="Self.FK_OceneKomentari_Restoran">
+            <End Role="Restoran" EntitySet="Restoran" />
+            <End Role="OceneKomentari" EntitySet="OceneKomentari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restoran_Opstine" Association="Self.FK_Restoran_Opstine">
+            <End Role="Opstine" EntitySet="Opstine" />
+            <End Role="Restoran" EntitySet="Restoran" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoviRestorana_Restoran" Association="Self.FK_TipoviRestorana_Restoran">
+            <End Role="Restoran" EntitySet="Restoran" />
+            <End Role="TipoviRestorana" EntitySet="TipoviRestorana" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GdeDaJedemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="KorisnikID" />
+          </Key>
+          <Property Name="KorisnikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DatumUclanjenja" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DatumRodj" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="KorisnikRolas" Relationship="Self.FK_KorisnikRola_Korisnik" FromRole="Korisnik" ToRole="KorisnikRola" />
+          <NavigationProperty Name="OceneKomentaris" Relationship="Self.FK_OceneKomentari_Korisnik" FromRole="Korisnik" ToRole="OceneKomentari" />
+        </EntityType>
+        <EntityType Name="KorisnikRola">
+          <Key>
+            <PropertyRef Name="KorisnikRolaID" />
+          </Key>
+          <Property Name="KorisnikRolaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KorisnikID" Type="Int32" Nullable="false" />
+          <Property Name="RolaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_KorisnikRola_Korisnik" FromRole="KorisnikRola" ToRole="Korisnik" />
+          <NavigationProperty Name="Rola" Relationship="Self.FK_KorisnikRola_Rola" FromRole="KorisnikRola" ToRole="Rola" />
+        </EntityType>
+        <EntityType Name="OceneKomentari">
+          <Key>
+            <PropertyRef Name="KomentarID" />
+          </Key>
+          <Property Name="KomentarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ocena" Type="Double" />
+          <Property Name="Opis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RestoranID" Type="Int32" Nullable="false" />
+          <Property Name="KorisnikID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_OceneKomentari_Korisnik" FromRole="OceneKomentari" ToRole="Korisnik" />
+          <NavigationProperty Name="Restoran" Relationship="Self.FK_OceneKomentari_Restoran" FromRole="OceneKomentari" ToRole="Restoran" />
+        </EntityType>
+        <EntityType Name="Opstine">
+          <Key>
+            <PropertyRef Name="opstinaID" />
+          </Key>
+          <Property Name="opstinaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Restorans" Relationship="Self.FK_Restoran_Opstine" FromRole="Opstine" ToRole="Restoran" />
+        </EntityType>
+        <EntityType Name="Restoran">
+          <Key>
+            <PropertyRef Name="RestoranID" />
+          </Key>
+          <Property Name="RestoranID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PIB" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Slika" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mapa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Opstina" Type="Int32" />
+          <NavigationProperty Name="OceneKomentaris" Relationship="Self.FK_OceneKomentari_Restoran" FromRole="Restoran" ToRole="OceneKomentari" />
+          <NavigationProperty Name="Opstine" Relationship="Self.FK_Restoran_Opstine" FromRole="Restoran" ToRole="Opstine" />
+          <NavigationProperty Name="TipoviRestoranas" Relationship="Self.FK_TipoviRestorana_Restoran" FromRole="Restoran" ToRole="TipoviRestorana" />
+        </EntityType>
+        <EntityType Name="Rola">
+          <Key>
+            <PropertyRef Name="RolaID" />
+          </Key>
+          <Property Name="RolaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KorisnikRolas" Relationship="Self.FK_KorisnikRola_Rola" FromRole="Rola" ToRole="KorisnikRola" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TipoviRestorana">
+          <Key>
+            <PropertyRef Name="TipId" />
+          </Key>
+          <Property Name="TipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RestoranID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Restoran" Relationship="Self.FK_TipoviRestorana_Restoran" FromRole="TipoviRestorana" ToRole="Restoran" />
+        </EntityType>
+        <Association Name="FK_KorisnikRola_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="KorisnikRola" Type="Self.KorisnikRola" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="KorisnikRola">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OceneKomentari_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="OceneKomentari" Type="Self.OceneKomentari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="KorisnikID" />
+            </Principal>
+            <Dependent Role="OceneKomentari">
+              <PropertyRef Name="KorisnikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KorisnikRola_Rola">
+          <End Role="Rola" Type="Self.Rola" Multiplicity="1" />
+          <End Role="KorisnikRola" Type="Self.KorisnikRola" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rola">
+              <PropertyRef Name="RolaID" />
+            </Principal>
+            <Dependent Role="KorisnikRola">
+              <PropertyRef Name="RolaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OceneKomentari_Restoran">
+          <End Role="Restoran" Type="Self.Restoran" Multiplicity="1" />
+          <End Role="OceneKomentari" Type="Self.OceneKomentari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restoran">
+              <PropertyRef Name="RestoranID" />
+            </Principal>
+            <Dependent Role="OceneKomentari">
+              <PropertyRef Name="RestoranID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restoran_Opstine">
+          <End Role="Opstine" Type="Self.Opstine" Multiplicity="0..1" />
+          <End Role="Restoran" Type="Self.Restoran" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opstine">
+              <PropertyRef Name="opstinaID" />
+            </Principal>
+            <Dependent Role="Restoran">
+              <PropertyRef Name="Opstina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoviRestorana_Restoran">
+          <End Role="Restoran" Type="Self.Restoran" Multiplicity="1" />
+          <End Role="TipoviRestorana" Type="Self.TipoviRestorana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restoran">
+              <PropertyRef Name="RestoranID" />
+            </Principal>
+            <Dependent Role="TipoviRestorana">
+              <PropertyRef Name="RestoranID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GdeDaJedemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Korisniks" EntityType="Self.Korisnik" />
+          <EntitySet Name="KorisnikRolas" EntityType="Self.KorisnikRola" />
+          <EntitySet Name="OceneKomentaris" EntityType="Self.OceneKomentari" />
+          <EntitySet Name="Opstines" EntityType="Self.Opstine" />
+          <EntitySet Name="Restorans" EntityType="Self.Restoran" />
+          <EntitySet Name="Rolas" EntityType="Self.Rola" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TipoviRestoranas" EntityType="Self.TipoviRestorana" />
+          <AssociationSet Name="FK_KorisnikRola_Korisnik" Association="Self.FK_KorisnikRola_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisniks" />
+            <End Role="KorisnikRola" EntitySet="KorisnikRolas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OceneKomentari_Korisnik" Association="Self.FK_OceneKomentari_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisniks" />
+            <End Role="OceneKomentari" EntitySet="OceneKomentaris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KorisnikRola_Rola" Association="Self.FK_KorisnikRola_Rola">
+            <End Role="Rola" EntitySet="Rolas" />
+            <End Role="KorisnikRola" EntitySet="KorisnikRolas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OceneKomentari_Restoran" Association="Self.FK_OceneKomentari_Restoran">
+            <End Role="Restoran" EntitySet="Restorans" />
+            <End Role="OceneKomentari" EntitySet="OceneKomentaris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restoran_Opstine" Association="Self.FK_Restoran_Opstine">
+            <End Role="Opstine" EntitySet="Opstines" />
+            <End Role="Restoran" EntitySet="Restorans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoviRestorana_Restoran" Association="Self.FK_TipoviRestorana_Restoran">
+            <End Role="Restoran" EntitySet="Restorans" />
+            <End Role="TipoviRestorana" EntitySet="TipoviRestoranas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GdeDaJedemModelStoreContainer" CdmEntityContainer="GdeDaJedemEntities">
+          <EntitySetMapping Name="Korisniks">
+            <EntityTypeMapping TypeName="GdeDaJedemModel.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DatumUclanjenja" ColumnName="DatumUclanjenja" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="DatumRodj" ColumnName="DatumRodj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KorisnikRolas">
+            <EntityTypeMapping TypeName="GdeDaJedemModel.KorisnikRola">
+              <MappingFragment StoreEntitySet="KorisnikRola">
+                <ScalarProperty Name="KorisnikRolaID" ColumnName="KorisnikRolaID" />
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="RolaID" ColumnName="RolaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OceneKomentaris">
+            <EntityTypeMapping TypeName="GdeDaJedemModel.OceneKomentari">
+              <MappingFragment StoreEntitySet="OceneKomentari">
+                <ScalarProperty Name="KomentarID" ColumnName="KomentarID" />
+                <ScalarProperty Name="Ocena" ColumnName="Ocena" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="RestoranID" ColumnName="RestoranID" />
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opstines">
+            <EntityTypeMapping TypeName="GdeDaJedemModel.Opstine">
+              <MappingFragment StoreEntitySet="Opstine">
+                <ScalarProperty Name="opstinaID" ColumnName="opstinaID" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restorans">
+            <EntityTypeMapping TypeName="GdeDaJedemModel.Restoran">
+              <MappingFragment StoreEntitySet="Restoran">
+                <ScalarProperty Name="RestoranID" ColumnName="RestoranID" />
+                <ScalarProperty Name="PIB" ColumnName="PIB" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+                <ScalarProperty Name="Mapa" ColumnName="Mapa" />
+                <ScalarProperty Name="Opstina" ColumnName="Opstina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rolas">
+            <EntityTypeMapping TypeName="GdeDaJedemModel.Rola">
+              <MappingFragment StoreEntitySet="Rola">
+                <ScalarProperty Name="RolaID" ColumnName="RolaID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GdeDaJedemModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoviRestoranas">
+            <EntityTypeMapping TypeName="GdeDaJedemModel.TipoviRestorana">
+              <MappingFragment StoreEntitySet="TipoviRestorana">
+                <ScalarProperty Name="TipId" ColumnName="TipId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="RestoranID" ColumnName="RestoranID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

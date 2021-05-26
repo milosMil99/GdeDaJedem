@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9F29A4A9-5D2D-4455-8C3B-D1983C10A947}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GdeDaJedem.Entity</RootNamespace>
+    <AssemblyName>GdeDaJedem.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\GdeDaJedem\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\GdeDaJedem\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcFlashMessages, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\GdeDaJedem\packages\MvcFlashMessages.0.3.1\lib\MvcFlashMessages.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\GdeDaJedem\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\GdeDaJedem\packages\Microsoft.AspNet.Mvc.3.0.20105.1\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\GdeDaJedem\packages\Microsoft.AspNet.Razor.1.0.20105.408\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\GdeDaJedem\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\GdeDaJedem\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\GdeDaJedem\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GdeDaJedemEF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GdeDaJedemEF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GdeDaJedemEF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GdeDaJedemEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GdeDaJedemEF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GdeDaJedemEF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="KomentarRepository.cs" />
+    <Compile Include="Korisnik.cs">
+      <DependentUpon>GdeDaJedemEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KorisnikRepository.cs" />
+    <Compile Include="KorisnikRola.cs">
+      <DependentUpon>GdeDaJedemEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KorisnikRolaRepository.cs" />
+    <Compile Include="OceneKomentari.cs">
+      <DependentUpon>GdeDaJedemEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Opstine.cs">
+      <DependentUpon>GdeDaJedemEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Restoran.cs">
+      <DependentUpon>GdeDaJedemEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RestoranRespository.cs" />
+    <Compile Include="Rola.cs">
+      <DependentUpon>GdeDaJedemEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>GdeDaJedemEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoviRestorana.cs">
+      <DependentUpon>GdeDaJedemEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="GdeDaJedemEF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GdeDaJedemEF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="GdeDaJedemEF.edmx.diagram">
+      <DependentUpon>GdeDaJedemEF.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\flash-messages.css" />
+    <Content Include="GdeDaJedemEF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GdeDaJedemEF.Context.cs</LastGenOutput>
+      <DependentUpon>GdeDaJedemEF.edmx</DependentUpon>
+    </Content>
+    <Content Include="GdeDaJedemEF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GdeDaJedemEF.edmx</DependentUpon>
+      <LastGenOutput>GdeDaJedemEF.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GdeDaJedem.Domain\GdeDaJedem.Domain.csproj">
+      <Project>{291b74d4-b1d0-4125-acb7-2cae6ce7aa18}</Project>
+      <Name>GdeDaJedem.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

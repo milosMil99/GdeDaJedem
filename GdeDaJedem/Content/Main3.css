@@ -1,0 +1,154 @@
+﻿html {
+    margin: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    margin-left: 10%;
+}
+
+.box {
+    visibility: hidden;
+}
+
+.logo {
+    border: none;
+    width: 100%;
+    //margin-left: 50%;
+    margin-top: 10%;
+}
+
+.logo1 {
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+}
+
+.searchPolje {
+    width: 70%;
+    // margin-left: 20%;
+}
+
+
+
+.affix1 {
+    top: 0;
+    z-index: 1;
+    display: flex;
+    position: sticky;
+}
+
+
+@media (max-width: 768px) {
+    .navSlikaDiv {
+        visibility: hidden;
+    }
+}
+
+.navSLikaDiv {
+    padding: 0;
+    background-image: url('Img/proba1.png');
+    width: 100%;
+    position: relative;
+    background-size: 100% 100%;
+    background-position: 80%;
+}
+
+.header {
+    height: 768px;
+    width: 100%;
+    margin: 0;
+}
+
+.naslov {
+    font-size: 2em;
+    font-weight: bolder;
+    width: 70%;
+    margin-top: 25%;
+    text-align: left;
+}
+
+.icon {
+    width: 100%;
+}
+
+.nastavak {
+    width: 100%;
+}
+
+
+
+.onama {
+    margin-left: 40%;
+}
+
+
+.dodatakNaFooter {
+    width: 100%;
+}
+
+
+.ponuda {
+    margin-bottom: 10%;
+}
+
+.logovanje {
+    margin-top: 2em;
+    color: white;
+    font-weight: 700;
+}
+
+    .logovanje:hover {
+        background-color: black;
+        color: white;
+    }
+
+    .logovanje:focus {
+        color: white;
+    }
+
+
+
+.dugmePretraga {
+    font-weight: 700;
+    width: 45%;
+    margin-left: 7em;
+    background-color: #c2c2c2;
+    margin: 0;
+}
+
+.pretragaNaziv {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 0.5px solid #303030;
+}
+
+.tipoviDugme {
+    font-weight: 500;
+    border: 1px solid black;
+}
+
+    .tipoviDugme:focus {
+        box-shadow: none;
+    }
+
+.prvaForma {
+    margin-bottom: 2em;
+}
+
+.ili {
+    margin-left: 12em;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+

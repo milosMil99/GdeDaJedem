@@ -1,0 +1,34 @@
+﻿body {
+    margin: 0 15%;
+}
+.navigacija {
+    background-color: #e6e1e1 !important;
+}
+
+
+.registrujSe{
+    
+    margin-left: 10%;
+}
+
+.logo{
+    
+    margin-left: 20%;
+    width: 70%;
+}
+
+
+
+.affix {
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    position: sticky;
+}
+
+.affix1 {
+    top: 12%;
+    width: 100%;
+    z-index: 1;
+    position: sticky;
+}
